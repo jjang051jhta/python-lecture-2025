@@ -1,38 +1,45 @@
-#변수명 = 값
-num01=10
-num02=3.14
-num03=0o17
-num04=0x2a
-print(num01,num02,num03,num04)
-print(num01+num01)
-print(num01*num01)
-print(num01**3) #제곱
-print(num01/num01)
-print(num01-num01)
-print(num01//3) #몫
-print(num01%3)  #나머지
+even = [2,4,6,8,10]
+odd = [1,3,5,7,9]
+animals = ["rabbit","lion","bear"]
+blankList = list()
+print(odd)
+print(odd[0])
+print(odd[0:2]) #  a <= 출력되는 범위 < b
 
-str01 =  """hello python"""  #리스트로 관리
-print(str01+"!!!")
-print(str01*3)  #문자열에 곱하기 연산 가능
-print(str01[0]+str01[1]+str01[2]+str01[3]+str01[4])
-print(str01[0:5])
-print(str01[0:])
-print(str01[2:5])
-print(str01[0:10:2])  # [start:end:step]  
-print(str01[::-2])  # [start:end:step]
-print("I {0} {1}".format("hate","python"))
-print("I {emotion} {language}"
-      .format(language="python",emotion="hate"))
-emotion= "love"
-print(f"I {emotion} python")
-a=3
-b=5
-print(f"{a}+{b}={a+b}")
-print(f"{'hi':<10}!!")
-print(f"!!{'hi':>10}")
-print(f"!!{'hi':^10}!!")
-print(f"{'hi':=<10}!!")
-print(f"{'hi':=>10}!!")
-print(f"!!{'hi':=^10}!!")
-print(f"{1500000:,}")  # , 넣으면 3자리마다 , 넣어준다.
+print(odd+even)
+print(odd*2)
+odd[2] = 19
+print(odd)
+del odd[2]
+print(odd)
+print(odd[2])
+odd.append(11)
+print(odd)
+for item in animals :
+  print(item)
+print(len(animals))
+animals.append("dog")
+animals.append("dog")
+animals.append("dog")
+print(animals)
+animals.insert(1,"cat")
+print(animals)
+popAnimal = animals.pop()
+print(popAnimal)
+print(animals.count("dog"))
+#animals.clear()
+animals.remove("lion")
+print(animals)
+nums = [1,3,4,9,2,7,10,5,11]
+nums.sort()
+print(nums)
+nums.sort(reverse=True)
+print(nums)
+nums02 = odd+even
+print(nums02)
+print(odd)
+odd+=even
+print(odd)
+odd.extend(even)
+print(odd)
+
