@@ -79,8 +79,8 @@ while i <= 9:
 fruits = ["apple", "berry", "madarin", "melon"]
 for fruit in fruits:
     print(fruit)
-list = [(1, 2), (3, 4), (5, 6)]
-for first, second in list:
+list02 = [(1, 2), (3, 4), (5, 6)]
+for first, second in list02:
     print(first, ",", second)
 for i in range(11):  # range(start, end)
     print(i)
@@ -97,4 +97,17 @@ for i in range(1, 10):
     for dan in range(2, 10):
         print(f"{dan}x{i}={dan*i}", end="\t")
     print()
-    
+
+for idx, fruit in enumerate(fruits):
+    print(idx + 1, "-", fruit)
+
+person = {"name": "장성호", "age": 20, "weight": 80}
+for key, value in person.items():
+    print(key, ":", value)
+
+a = [1, 2, 3]
+b = ["김유신", "강감찬", "이순신"]
+print(list(zip(a, b)))
+
+for num, name in zip(a, b):
+    print(num, ":", name)
