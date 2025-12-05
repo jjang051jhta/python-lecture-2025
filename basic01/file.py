@@ -30,7 +30,30 @@ for i in range(1, 11):
 f04.close()
 
 f04 = open("basic01/new-file02.txt", "r", encoding="utf-8")
-content = f04.read()
+content = f04.read()  # 전체가 하나의 문자열이 됩니다. 데이터 분석할때
 print(content)
 f04.close()
 
+f04 = open("basic01/new-file02.txt", "r", encoding="utf-8")
+while True:
+    line = f04.readline()  # 엑셀파일 읽을때
+    if not line:
+        break
+    print(line)
+
+f04.close()
+
+f04 = open("basic01/new-file02.txt", "r", encoding="utf-8")
+lines = f04.readlines()
+print(lines)
+for line in lines:
+    line = line.strip()
+    print(line)
+f04.close()
+
+with open("basic01/new-file03.txt", "w", encoding="utf-8") as f:
+    f.write("새글을 씁니다.")
+
+lines = ["1번째 줄입니다.\n", "2번째 줄입니다.\n", "3번째 줄입니다.\n"]
+with open("basic01/new-file04.txt", "w", encoding="utf-8") as f:
+    f.writelines(lines)
