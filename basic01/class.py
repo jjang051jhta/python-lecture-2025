@@ -42,6 +42,27 @@ print(calculator01.sub(5))
 
 class FourCalc:
     # self는 자기 자신을 가리키는 키워드  자바에 this와 같다.
+    # 파이썬은 생성자 오버로딩이 없다. 필요하면 기본값을 세킹해두는 방식을 이용한다.
+
+    def __init__(self, first=0, second=0):
+        self.first = first
+        self.second = second
+
+    """
+    def __init__(self, *args):
+        if len(args) == 0:
+            self.first = 0
+            self.second = 0
+        elif len(args) == 1:
+            self.first = args[0]
+            self.second = 0
+        elif len(args) == 2:
+            self.first = args[0]
+            self.second = args[1]
+        else:
+            raise ValueError("매개변수는 2개 이상일 수 없습니다.")
+    """
+
     def setdata(self, first, second):
         self.first = first
         self.second = second
@@ -65,8 +86,8 @@ class FourCalc:
 
 aa = FourCalc()
 print(type(aa))
-aa.setdata(10, 20)
+# aa.setdata(10, 20)
 print(aa.add())
 print(aa.sub())
 print(aa.multiple())
-print(aa.divide())
+# print(aa.divide())
