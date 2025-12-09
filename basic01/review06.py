@@ -71,7 +71,7 @@ class Person:
 
     @name.setter
     def name(self, value):
-        self._name = value
+        self._name = value + "님"
 
 
 p = Person("홍길동")

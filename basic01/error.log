@@ -1,0 +1,2 @@
+2025-12-09 15:14:33 - ValueError : invalid literal for int() with base 10: 'fdsfds'
+2025-12-09 15:15:13 - ZeroDivisionError : division by zero
