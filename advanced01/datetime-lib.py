@@ -1,4 +1,5 @@
 # 기본함수는 import 없이 쓸 수 있다.  나머지 필요한것들은 불러다 써야 한다.
+import time as timer
 from datetime import date, time, timedelta, datetime  # 날짜관련 라이브러리
 
 
@@ -29,3 +30,15 @@ print(f"format : {now.strftime("%Y-%m-%d %H:%M:%S")}")
 now_str = "2025-12-10 11:01:00"
 trans_date = datetime.strptime(now_str, "%Y-%m-%d %H:%M:%S")
 print(trans_date)
+time01 = time(11, 12)
+lunch = time(12, 10)
+# time은 연산 안됨
+# print(lunch - time01)
+print(f"time01.hour : {time01.hour}")
+print(f"time01.minute : {time01.minute}")
+print(f"time01.second : {time01.second}")
+
+
+print("시작")
+timer.sleep(3)
+print("끝")
