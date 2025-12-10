@@ -38,7 +38,22 @@ print(f"time01.hour : {time01.hour}")
 print(f"time01.minute : {time01.minute}")
 print(f"time01.second : {time01.second}")
 
+print(timer.time())  # 1970 1 1일부터 이때까지 흘러온 초
 
-print("시작")
-timer.sleep(3)
-print("끝")
+start = timer.time()
+for _ in range(5_000_000):
+    pass
+end = timer.time()
+print("for문으로 50000000루핑 : ", end - start)
+
+current = timer.localtime()
+print(timer.strftime("%Y-%m-%d %H:%M:%S", current))
+
+while True:
+    print(timer.strftime("%Y-%m-%d %H:%M:%S", timer.localtime()))
+    timer.sleep(1)
+
+
+# print("시작")
+# timer.sleep(3)
+# print("끝")
