@@ -6,7 +6,7 @@ from PIL import Image
 current_dir = Path(__file__).resolve().parent
 json_path = current_dir / "qrcode.json"
 logo_dir = current_dir / "logo"
-output_dir = current_dir / "qrcode"
+output_dir = current_dir / "output"
 
 dic = [
     {"url": "www.coupang.com", "logo": "logo05.png", "name": "쿠팡"},
@@ -27,9 +27,9 @@ with open(json_path, "r", encoding="utf-8") as f:
 
 def create_qrcode(url: str, logo_name: str, output: Path):
     qr = qrcode.QRCode(
-        version=6,  # 가로세로 셀(cell) 숫자  6 = 41
+        version=4,  # 가로세로 셀(cell) 숫자  6 = 41
         error_correction=qrcode.constants.ERROR_CORRECT_H,
-        box_size=12,  # 하나의 cell 크기
+        box_size=6,  # 하나의 cell 크기
         border=4,  # qr의 크기는 version의 숫자에 해당하는 cell 숫자 * box_size로 이루어 진다.
     )
     qr.add_data(url)
@@ -43,7 +43,7 @@ def create_qrcode(url: str, logo_name: str, output: Path):
         print(f"로고 파일 없음 : {logo_path.name}")
         return
     logo = Image.open(logo_path).convert("RGBA")
-    logo_size = qr_width // 5
+    logo_size = 64
     logo = logo.resize((logo_size, logo_size))
     center_position = (
         (qr_width - logo_size) // 2,
@@ -51,3 +51,12 @@ def create_qrcode(url: str, logo_name: str, output: Path):
     )
     qr_img.paste(logo, center_position, logo)
     qr_img.save(output, format="PNG")
+
+
+for item in items:
+    url = item["url"]
+    logo_name = item["logo"]
+    output_name = url.replace("www.", "") + ".png"
+    output_file = output_dir / output_name
+    create_qrcode(url, logo_name, output_file)
+print("qrcode 생성 완료")
