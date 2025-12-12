@@ -1,6 +1,6 @@
 import json
-import qrcode
-from pathlib import Path
+import qrcode  # pip install qrcode
+from pathlib import Path  # pip install pillow
 from PIL import Image
 
 current_dir = Path(__file__).resolve().parent
