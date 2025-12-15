@@ -5,6 +5,11 @@ from google.cloud import texttospeech
 from playsound import playsound
 from pathlib import Path
 
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = (
+#     r"여기에 json키 경로/xxx.json"
+# )
+
+# cmd 열어서 set GOOGLE_APPLICATION_CREDENTIALS="여기에 json키 경로/xxx.json"
 
 current_dir = Path(__file__).resolve().parent
 
