@@ -11,6 +11,8 @@ mp3_path = current_dir / "kor02_trans.mp3"
 
 kor_lines = []
 
+# 잘못쓰면 돈나감
+
 
 # 번역
 async def trans():
