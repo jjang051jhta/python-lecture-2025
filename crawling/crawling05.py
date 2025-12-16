@@ -27,6 +27,7 @@ def unsplash_img_crawling(search="nature", total=10):
   count= 0
   src_list =[]
   #print(imgs[0].get("src"))
+  saved = 0
   for img in imgs:
     src = img.get("src")
     if not src:
@@ -37,4 +38,8 @@ def unsplash_img_crawling(search="nature", total=10):
     count+=1
   #print(soup.prettify())
   #print(src_list)
+  for src in src_list:
+    file_name = f"unsplash_{saved+1:03d}.jpg"
+    save_path = folder / file_name
+    saved+=1
 unsplash_img_crawling()
