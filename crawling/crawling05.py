@@ -20,5 +20,21 @@ def unsplash_img_crawling(search="nature", total=10):
                                          'img[data-testid="asset-grid-masonry-img"]'))
   )
   soup = BeautifulSoup(driver.page_source,"html.parser")
-  print(soup.prettify())
+  imgs =  soup.select('img[data-testid="asset-grid-masonry-img"]')
+  folder = Path(f"unsplash_imges_{search}")
+  folder.mkdir(parents=True,exist_ok=True)
+  print(len(imgs))
+  count= 0
+  src_list =[]
+  #print(imgs[0].get("src"))
+  for img in imgs:
+    src = img.get("src")
+    if not src:
+      continue
+    if count>=total:
+      break
+    src_list.append(src)
+    count+=1
+  #print(soup.prettify())
+  #print(src_list)
 unsplash_img_crawling()
