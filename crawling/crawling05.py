@@ -14,5 +14,11 @@ def unsplash_img_crawling(search="nature", total=10):
   wait = WebDriverWait(driver,10)
   url = f"https://unsplash.com/s/photos/{search}"
   driver.get(url)
-
+  wait = WebDriverWait(driver,10)
+  wait.until(
+    EC.presence_of_all_elements_located((By.CSS_SELECTOR,
+                                         'img[data-testid="asset-grid-masonry-img"]'))
+  )
+  soup = BeautifulSoup(driver.page_source,"html.parser")
+  print(soup.prettify())
 unsplash_img_crawling()
