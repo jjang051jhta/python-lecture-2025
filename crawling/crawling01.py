@@ -42,3 +42,7 @@ print(soup01.select_one("#another-title").text)
 li_list02 = soup01.select(".menu")
 for item in li_list02:
   print(item.get_text())
+
+
+#find("태그네임"), find_all("태그네임")
+#select_one("css 선택자"), select("css 선택자")
