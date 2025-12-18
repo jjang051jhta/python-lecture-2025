@@ -39,13 +39,13 @@ for idx in range(N):
 file_path = Path(__file__).parent / "student_scores.xlsx"    
 wb.save(file_path)
 """
-current_dir = Path(__file__).resolve().parent
-wb = load_workbook(current_dir / "student_scores.xlsx")
-ws =  wb.active
-rows = []
+# current_dir = Path(__file__).resolve().parent
+# wb = load_workbook(current_dir / "student_scores.xlsx")
+# ws =  wb.active
+# rows = []
 
-for row in ws.iter_rows(min_row=2, max_row=ws.max_row, values_only=True):
-    rows.append(list(row))
+# for row in ws.iter_rows(min_row=2, max_row=ws.max_row, values_only=True):
+#     rows.append(list(row))
 
 # for row in range(2, ws.max_row + 1):
 #     rows.append([
@@ -58,20 +58,50 @@ for row in ws.iter_rows(min_row=2, max_row=ws.max_row, values_only=True):
 #             ws[f"G{row}"].value
 #     ])
 #print(rows)    
-data = np.array(rows, dtype=object)  # object로 해야 숫자도 같이 들어감
-print(data)
-avg_scores = data[:, 6].astype(int)  # 국어, 영어, 수학 점수 부분만 추출하여 정수형으로 변환
-print(avg_scores)
-mask =  avg_scores >= 70
-passed_students = data[mask]
-print(passed_students)
-wb = Workbook()
-ws = wb.active
-ws.title = "성적70점이상"
-headers = ["이름", "이메일", "국어", "영어", "수학", "총점", "평균"]
-ws.append(headers)
-for row in passed_students:
-    ws.append(row.tolist())
-file_path = Path(__file__).parent / "student_passed.xlsx"    
-wb.save(file_path)
+# data = np.array(rows, dtype=object)  # object로 해야 숫자도 같이 들어감
+# print(data)
+# avg_scores = data[:, 6].astype(int)  # 국어, 영어, 수학 점수 부분만 추출하여 정수형으로 변환
+# print(avg_scores)
+# mask =  avg_scores >= 70
+# passed_students = data[mask]
+# print(passed_students)
+# wb = Workbook()
+# ws = wb.active
+# ws.title = "성적70점이상"
+# headers = ["이름", "이메일", "국어", "영어", "수학", "총점", "평균"]
+# ws.append(headers)
+# for row in passed_students:
+#     ws.append(row.tolist())
+# file_path = Path(__file__).parent / "student_passed.xlsx"    
+# wb.save(file_path)
     
+
+current_dir = Path(__file__).resolve().parent
+wb = load_workbook(current_dir / "student_scores.xlsx")
+ws =  wb.active
+scores=[]
+# 엑셀의 상단 header의 A/B/C...열을 기준으로 값을 읽을 때는 문자열로 접근
+for row in range(2, ws.max_row+1):
+    scores.append([
+                   ws.cell(row,1).value, 
+                   ws.cell(row,2).value, 
+                   ws.cell(row,3).value, 
+                   ws.cell(row,4).value, 
+                   ws.cell(row,5).value, 
+                   ws.cell(row,6).value, 
+                   ws.cell(row,7).value])
+print(scores)
+data = np.array(scores, dtype=object)
+subjects = data[:, 2:5].astype(int)
+print(subjects)
+subjects_mean = subjects.mean(axis=0)
+subjects_max = subjects.max(axis=0)
+subjects_min = subjects.min(axis=0)
+subjects_std = subjects.std(axis=0)
+print(f"과목별 평균 : {subjects_mean}")
+print(f"과목별 최대값 : {subjects_max}")    
+print(f"과목별 최소값 : {subjects_min}")
+print(f"과목별 표준편차 : {subjects_std}")
+
+
+
