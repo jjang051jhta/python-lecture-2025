@@ -57,5 +57,24 @@ ws03["A1"] = "점수"
 for idx, score in enumerate(scores, start=2):
     ws03[f"A{idx}"] = score   
 ws03["A7"] = "=SUM(A2:A6)"    
-ws03["A8"] = "=AVERAGE(A2:A6)"    
+ws03["A8"] = "=AVERAGE(A2:A6)"
 wb03.save(current_dir / "formula02.xlsx")
+
+data04 = [
+    ("홍길동", 80, 90, 70),
+    ("김철수", 60, 65, 55),
+    ("최영희", 88, 92, 91)
+]
+#이름,국어,영어,수학,총점,평균, 합격  (70이상이면 합격)
+wb04 = Workbook()
+ws04 = wb04.active  
+ws04.title = "성적표"
+ws04.append(("이름","국어","영어","수학","총점","평균","합격/불합격"))
+for idx, (name, kor, eng, math) in enumerate(data04, start=2):
+   ws04.append((name, kor, eng, math,"","",""))
+   ws04[f"E{idx}"] = f"=SUM(B{idx}:D{idx})"
+   ws04[f"F{idx}"] = f"=AVERAGE(B{idx}:D{idx})"
+   ws04[f"G{idx}"] = f'=IF(F{idx}>=70,"합격","불합격")'
+wb04.save(current_dir / "scorecard.xlsx")
+    
+
