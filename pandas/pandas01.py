@@ -19,5 +19,18 @@ dict_netflix = {
     'release_year':[2021, 2019, 2009, 2014, 2018, 2019, 2013, 2010],
     'duration':[300, 800, 128, 71, 124, 900, 123, 148],
     'listed_in':[np.nan, 'TV Horror', 'Action & Adventure', np.nan, np.nan, np.nan,np.nan, np.nan]}
-netflix = pd.DataFrame(dict_netflix)
-print(netflix)
+#netflix = pd.DataFrame(dict_netflix)
+#print(netflix)
+
+netflix_csv = pd.read_csv("./pandas/netflix.csv")
+#netflix_csv.to_csv("./pandas/netflix_out.csv", index=False)
+
+print(f"netflix_csv.columns={netflix_csv.columns}")
+print(f"netflix_csv.index={netflix_csv.index}")
+print(f"netflix_csv.index={list(netflix_csv.index)}")
+netflix_csv.index = ["1행", "2행", "3행", "4행", "5행", "6행", "7행", "8행"]
+#print(netflix_csv.loc[2])
+print(netflix_csv.loc["3행"])
+
+
+
