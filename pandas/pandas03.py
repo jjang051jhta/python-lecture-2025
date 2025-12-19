@@ -29,4 +29,5 @@ print(netflix_csv)
 print("="*200)
 netflix_csv.dropna(axis=1,inplace=True)  #na가 있으면 삭제해라
 print(netflix_csv)
+netflix_csv.to_csv("./pandas/netflix_csv_cleaned.csv",index=False)
 
