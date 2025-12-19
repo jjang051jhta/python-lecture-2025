@@ -43,6 +43,8 @@ netflix_csv = pd.read_csv("./pandas/netflix.csv")
 #print(title.head())
 #title_director_release_year = netflix_csv[["title","director","release_year"]]
 #print(title_director_release_year.head(5).to_string(justify="left"))
+title = netflix_csv.title
+print(title.head())
 
 
 
