@@ -2,14 +2,18 @@
 # pip install pandas
 import pandas as pd  #주로 표를 다룰때 쓴다 csv, excel, sql 테이블
 import numpy as np
+pd.set_option("display.max_rows", None)
+pd.set_option("display.max_columns", None)
+pd.set_option("display.max_colwidth", None)
+pd.set_option("display.width", None)
 #시리즈: 1차원 배열, 인덱스가 붙어있음
 #데이터프레임: 2차원 배열, 행과 열로 구성, 인덱스와 컬럼명이 붙어있음
 series_data = pd.Series([True,3.14,"ABC"])
-print(type(series_data))
-print(series_data)
+# print(type(series_data))
+# print(series_data)
 df = pd.DataFrame({"c0":[1,2,3],"c1":[4,5,6],"c2":[7,8,9]})
-print(type(df))
-print(df)
+# print(type(df))
+# print(df)
 
 dict_netflix = {
     'title':['Squid Game', 'Stranger Things', 'Sherlock Holmes', 'Iron Man & Captain America: Heroes United', 'Bird Box', 'Anne with an E', 'About Time','Inception'],
@@ -25,12 +29,20 @@ dict_netflix = {
 netflix_csv = pd.read_csv("./pandas/netflix.csv")
 #netflix_csv.to_csv("./pandas/netflix_out.csv", index=False)
 
-print(f"netflix_csv.columns={netflix_csv.columns}")
-print(f"netflix_csv.index={netflix_csv.index}")
-print(f"netflix_csv.index={list(netflix_csv.index)}")
-netflix_csv.index = ["1행", "2행", "3행", "4행", "5행", "6행", "7행", "8행"]
+# print(f"netflix_csv.columns={netflix_csv.columns}")
+# print(f"netflix_csv.index={netflix_csv.index}")
+# print(f"netflix_csv.index={list(netflix_csv.index)}")
+#netflix_csv.index = ["1행", "2행", "3행", "4행", "5행", "6행", "7행", "8행"]
 #print(netflix_csv.loc[2])
-print(netflix_csv.loc["3행"])
+#print(netflix_csv.loc["3행"])
+#print(netflix_csv.head())  #default가 5개  netflix_csv.head(숫자) 숫자만큼 들고온다.
+#print(netflix_csv.tail())  #default가 5개  netflix_csv.head(숫자) 숫자만큼 들고온다.
+#print(f"netflix_csv.shape={netflix_csv.shape}")  #(행, 열)
+#print(f"netflix_csv.info()={netflix_csv.info()}")
+#title = netflix_csv["title"]
+#print(title.head())
+#title_director_release_year = netflix_csv[["title","director","release_year"]]
+#print(title_director_release_year.head(5).to_string(justify="left"))
 
 
 
