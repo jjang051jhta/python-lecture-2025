@@ -12,3 +12,21 @@ netflix_csv = pd.read_csv("./pandas/netflix.csv")
 isna_sum = netflix_csv.isna().sum()
 print(isna_sum)
 print(netflix_csv.info())
+
+#결측치 비율
+for idx in netflix_csv.columns:
+  missing_value_rate = netflix_csv[idx].isna().sum() / len(netflix_csv)*100
+  if missing_value_rate > 0 :
+    print(f"{idx} : null rate = {missing_value_rate}")
+
+print(netflix_csv)
+print("="*200)
+netflix_csv["country"] = netflix_csv["country"].fillna("No Data")
+print(netflix_csv)
+print("="*200)
+netflix_csv["director"] = netflix_csv["director"].replace(np.nan,"No Name")
+print(netflix_csv)
+print("="*200)
+netflix_csv.dropna(axis=1,inplace=True)  #na가 있으면 삭제해라
+print(netflix_csv)
+
