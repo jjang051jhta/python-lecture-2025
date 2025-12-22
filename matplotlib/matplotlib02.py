@@ -13,6 +13,7 @@ plt.plot(x,y3,label="y=0.5x")
 plt.plot(x,y4,label="y=3x")
 plt.xlabel("x")
 plt.ylabel("y")
-plt.legend()
+plt.legend(loc="upper left", ncol=2, 
+           fontsize=8,bbox_to_anchor=(0,1))
 plt.title("line chart")
 plt.show()

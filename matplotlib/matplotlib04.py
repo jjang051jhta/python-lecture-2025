@@ -1,0 +1,12 @@
+import matplotlib.pyplot as plt
+# plt.plot([1,2,3],[4,4,4],"-",label="solid")
+# plt.plot([1,2,3],[3,3,3],"--",label="dashed")
+# plt.plot([1,2,3],[2,2,2],"-.",label="dashdot")
+# plt.plot([1,2,3],[1,1,1],":",label="dotted")
+plt.plot([1,2,3],[4,4,4],linestyle="solid",label="solid", color="#24b407")
+plt.plot([1,2,3],[3,3,3],linestyle="dashed",label="dashed", color="#840788")
+plt.plot([1,2,3],[2,2,2],linestyle="dashdot",label="dashdot", color="#D3660D")
+plt.plot([1,2,3],[1,1,1],linestyle="dotted",label="dotted", color="#26BFEE")
+plt.axis([0.8,3.2,0.5,5])
+plt.legend(loc="upper center",ncol=4)
+plt.show()
