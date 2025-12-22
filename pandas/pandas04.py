@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from pathlib import Path
 curernt_dir = Path(__file__).resolve().parent
 netflix_csv = pd.read_csv(curernt_dir / "netflix.csv")
@@ -24,3 +25,13 @@ print(netflix_csv.agg({"release_year":["min","max","median","std","mean"],
                        }))
 print(netflix_csv.groupby("type")["duration"].mean())
 print(netflix_csv.groupby(["type","country"])[["release_year","duration"]].mean())
+#급하게 데이터 추가해야 할때
+new = netflix_csv.iloc[0,:]
+netflix_csv.loc[8]=new
+print(netflix_csv.tail(2))
+netflix_csv = netflix_csv.drop(np.arange(2,5),axis=0)
+print(netflix_csv)
+netflix_csv["2duration"] = netflix_csv["duration"]*2
+print(netflix_csv)
+netflix_csv = netflix_csv.drop("2duration",axis=1)
+print(netflix_csv)
