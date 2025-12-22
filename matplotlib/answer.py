@@ -14,7 +14,7 @@ data = {
 
 df = pd.DataFrame(data)
 #print(df)
-
+plt.figure()
 df["ma3"] = df["sales"].rolling(3).mean()
 print(df["ma3"])
 
@@ -38,10 +38,11 @@ plt.grid(True, linestyle="dotted")
 plt.legend()
 print("=="*60)
 #print(df["sales"] >=200)
-#print(df.loc[df["sales"] >=200,"day"].iloc[0])
-# first_day =  df.loc[df["sales"] >=200,"day"].iloc[0]
-# df02 = df[df["day"] >= first_day]
-# plt.plot(df02["day"], df02["sales"])
+plt.figure()
+print(df.loc[df["sales"] >=200,"day"].iloc[0])
+first_day =  df.loc[df["sales"] >=200,"day"].iloc[0]
+df02 = df[df["day"] >= first_day]
+plt.plot(df02["day"], df02["sales"])
 plt.show()
 
 
