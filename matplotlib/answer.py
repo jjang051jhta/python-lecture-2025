@@ -38,11 +38,21 @@ plt.grid(True, linestyle="dotted")
 plt.legend()
 print("=="*60)
 #print(df["sales"] >=200)
+"""
+# 16일후 그래프 윈도우 다시 하나 더 띄우기
 plt.figure()
 print(df.loc[df["sales"] >=200,"day"].iloc[0])
 first_day =  df.loc[df["sales"] >=200,"day"].iloc[0]
 df02 = df[df["day"] >= first_day]
 plt.plot(df02["day"], df02["sales"])
+"""
+idx = df["sales"].idxmax()
+#print("idx===",idx)
+x_max = df.loc[idx,"day"]
+y_max = df.loc[idx,"sales"]
+#plt.figure()
+plt.plot(df["day"],df["sales"])
+plt.plot([x_max],[y_max],marker="o",markersize=12)
 plt.show()
 
 
