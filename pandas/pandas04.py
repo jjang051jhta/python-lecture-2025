@@ -22,3 +22,5 @@ print(netflix_csv[["release_year","duration"]].describe())
 print(netflix_csv.agg({"release_year":["min","max","median","std","mean"],
                        "duration":["min","max","median","std"]
                        }))
+print(netflix_csv.groupby("type")["duration"].mean())
+print(netflix_csv.groupby(["type","country"])[["release_year","duration"]].mean())
