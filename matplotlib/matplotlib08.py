@@ -1,5 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+
+plt.rcParams["font.family"] = "Malgun Gothic"   # 윈도우 기본 한글 폰트
+plt.rcParams["axes.unicode_minus"] = False  
 titanic = pd.read_csv("./matplotlib/titanic.csv")
 #print(titanic.head())
 #print(titanic.info())
@@ -7,7 +10,7 @@ pclass_survived_mean = titanic.groupby("Pclass")["Survived"].mean().reset_index(
 #print(f"{pclass_survived_mean}")
 #print(titanic.groupby("Pclass")["Survived"].mean().reset_index())
 plt.plot(pclass_survived_mean["Pclass"],pclass_survived_mean["Survived"], marker="o")
-#plt.title("타이타닉 객실등급별 생존비율")
+plt.title("타이타닉 객실등급별 생존비율")
 plt.grid(True)
 plt.xlabel("Pclass")
 plt.ylabel("Survived")
