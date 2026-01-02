@@ -33,18 +33,26 @@
         const ctx = document.querySelector('#myChart');
         const sidoNames = json.response.body.items.map(r => r.stationName)
         const pm10Values = json.response.body.items.map(r => r.pm10Value)
+        const pm25Values = json.response.body.items.map(r => r.pm25Value)
         console.log(pm10Values)
 
-
+        const labels = sidoNames
         new Chart(ctx, {
-          type: 'bar',  // line,bar
+          type: 'bar',
           data: {
-            labels: sidoNames,//['월', '화', '수', '목', '금', '토', '일'],
-            datasets: [{
-              label: '시도별 오존 농도',
-              data: pm10Values,//[12, 19, 3, 5, 3, 17, 9],
-              borderWidth: 1
-            }]
+            labels: labels,
+            datasets: [
+              {
+                label: '시도별 미세먼지 농도',
+                data: pm10Values,//[12, 19, 3, 5, 3, 17, 9],
+                borderWidth: 1
+              },
+              {
+                label: '시도별 초미세먼지 농도',
+                data: pm25Values,//[12, 19, 3, 5, 3, 17, 9],
+                borderWidth: 1
+              }
+            ]
           },
           options: {
             scales: {
