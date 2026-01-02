@@ -7,7 +7,7 @@
     <title>챠트</title>
     <style>
       .myChartWrap {
-        width: 800px;
+        width: 1600px;
         height: 600px;
       }
     </style>
@@ -23,34 +23,42 @@
 
 
     <script>
-      const url = "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey=&returnType=json&numOfRows=100&pageNo=1&sidoName=경기&ver=1.0"
+      const key = ""
+      const url = `https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey=${key}&returnType=json&numOfRows=100&pageNo=1&sidoName=경기&ver=1.0`
       async function loadData() {
         const res = await fetch(url)
         const json = await res.json()
         console.log(json)
+
+        const ctx = document.querySelector('#myChart');
+        const sidoNames = json.response.body.items.map(r => r.stationName)
+        const pm10Values = json.response.body.items.map(r => r.pm10Value)
+        console.log(pm10Values)
+
+
+        new Chart(ctx, {
+          type: 'bar',  // line,bar
+          data: {
+            labels: sidoNames,//['월', '화', '수', '목', '금', '토', '일'],
+            datasets: [{
+              label: '시도별 오존 농도',
+              data: pm10Values,//[12, 19, 3, 5, 3, 17, 9],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
       }
       loadData()
 
-      const ctx = document.querySelector('#myChart');
 
-      new Chart(ctx, {
-        type: 'doughnut',  // line,bar
-        data: {
-          labels: ['월', '화', '수', '목', '금', '토', '일'],
-          datasets: [{
-            label: '주별 매출 현황',
-            data: [12, 19, 3, 5, 3, 17, 9],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
+
     </script>
   </body>
 
