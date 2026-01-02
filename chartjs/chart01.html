@@ -8,7 +8,7 @@
     <style>
       .myChartWrap {
         width: 800px;
-        height: 450px;
+        height: 600px;
       }
     </style>
   </head>
@@ -20,16 +20,26 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
+
     <script>
+      const url = "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey=&returnType=json&numOfRows=100&pageNo=1&sidoName=경기&ver=1.0"
+      async function loadData() {
+        const res = await fetch(url)
+        const json = await res.json()
+        console.log(json)
+      }
+      loadData()
+
       const ctx = document.querySelector('#myChart');
 
       new Chart(ctx, {
-        type: 'bar',
+        type: 'doughnut',  // line,bar
         data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          labels: ['월', '화', '수', '목', '금', '토', '일'],
           datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: '주별 매출 현황',
+            data: [12, 19, 3, 5, 3, 17, 9],
             borderWidth: 1
           }]
         },
